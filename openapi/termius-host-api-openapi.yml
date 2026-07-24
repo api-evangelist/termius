@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Termius API Bridge group host API
+  description: "# Welcome\nYou are viewing the REST API documentation for the Termius API Bridge. It is an interactive page that allows you to explore the API endpoints and their parameters.\n\n## Get started\nTermius API Bridge is a REST API that enables you to create and delete hosts as well as create groups in your Termius vaults.\n\nExample of the API call with `curl` for the API Bridge deployed to the `localhost:8080`:\n\n<pre> curl -X POST http://localhost:8080/v1/host/test/ \\\n -H \"Content-Type: application/json\" \\\n -d '{\n       \"vault\": \"Vault_name\",\n       \"address\": \"example.com\",\n       \"label\": \"Database\",\n       \"ssh\": {\n         \"port\": 22,\n         \"credentials\": {\n           \"username\": \"username\",\n           \"password\": \"password\"\n         }\n       }\n     }'\n</pre>\n\nThe full documentation and the list of the API endpoints is <a rel=\"noopener noreferrer\" href=\"#operations-tag-host\">down bellow on the page</a>.\nTo try the API endpoints, click on the **Try it out** button and fill in the required fields: **path** and **body**.\n\n## Help\nIf you have any questions about Termius API Bridge please send your requests on [our support portal](https://support.termius.com/hc/en-us/requests/new)."
+  termsOfService: https://termius.com/terms-of-use
+  contact:
+    email: support@termius.com
+  license:
+    name: Proprietary and confidential
+  version: 0.0.1
+tags:
+- name: host
+  description: Create or Delete a host inside the vault or the group
+paths:
+  /v1/host/{external_id}/:
+    post:
+      tags:
+      - host
+      summary: Create a new Host in the vault
+      description: "Pass the host ID in your infrastructure as `external_id` in the API\npath, the vault name in the `vault`, `address`, and optional `label`\nfields. Additionally, pass the ssh port in `port` field inside the\n`ssh` object or telnet port in `port` inside the `telnet` object.\n\nTo see the full schema of the request, click on the **Schema** in\n**Request body** below.\n\nExample of the request that creates a new host with `external_id` as\n`vm-1234` in `Team` vault with address `example.com`, label `Database`,\nssh port `22`, and ssh credentials in `username` and `password`\nproperties, and SSH key in the `key` property:\n\n- path: `/v1/host/vm-1234/`\n- body:\n  ```\n  {\n    \"vault\": \"Team\",\n    \"address\": \"example.com\",\n    \"label\": \"Database\",\n    \"ssh\": {\n      \"port\": 22,\n      \"credentials\": {\n        \"username\": \"username\",\n        \"password\": \"password\",\n        \"key\": {\n          \"label\": \"shared with the team\",\n          \"private\": \"-----BEGIN OPENSSH PRIVATE KEY-----\\nb3Blbn...\"\n        }\n      }\n    }\n  }\n  ```\n\nOptionally, pass the `group` field with the group `external_id` instead\nof the vault. Create such a group with the\n<a rel=\"noopener noreferrer\" href=\"#operations-group-createGroup\">\n<code>/group/{external_id}/</code> API</a>.\n"
+      operationId: createHost
+      parameters:
+      - $ref: '#/components/parameters/HostExternalID'
+      requestBody:
+        $ref: '#/components/requestBodies/Host'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateHostResponse'
+        '400':
+          description: Failed request. Check the request body.
+    delete:
+      tags:
+      - host
+      summary: Delete the Host
+      operationId: deleteHost
+      description: 'Pass the host id in your infrastructure as `external_id` in the API
+
+        path.
+
+
+        Example of the request that deletes the host with `external_id` as
+
+        `vm-1234`:
+
+
+        - path: `/v1/host/vm-1234/`
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/HostExternalID'
+      responses:
+        '204':
+          description: successful operation
+        '400':
+          description: Failed request. Check the request body.
+components:
+  schemas:
+    SShKey:
+      required:
+      - label
+      - private
+      properties:
+        label:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
+    Credentials:
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Port:
+      type: integer
+      format: int64
+      default: 22
+      minimum: 1
+      maximum: 65535
+    CreateHostResponse:
+      type: object
+    GroupReference:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          type: string
+          example: client-1234
+    Host:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/GroupReference'
+      - $ref: '#/components/schemas/VaultReference'
+      required:
+      - address
+      example:
+        vault: Team
+        address: some.address.for.connection
+      properties:
+        address:
+          type: string
+          example: example.com
+        label:
+          type: string
+          example: Database
+        tags:
+          type: array
+          items:
+            type: string
+        ssh:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              allOf:
+              - $ref: '#/components/schemas/Credentials'
+              properties:
+                key:
+                  $ref: '#/components/schemas/SShKey'
+        telnet:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              $ref: '#/components/schemas/Credentials'
+    VaultReference:
+      type: object
+      required:
+      - vault
+      properties:
+        vault:
+          type: string
+          example: Team
+  parameters:
+    HostExternalID:
+      name: external_id
+      in: path
+      description: Host ID in your original system
+      required: true
+      example: vm-1234
+      schema:
+        type: string
+  requestBodies:
+    Host:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Host'
+externalDocs:
+  description: Termius Documentation
+  url: https://support.termius.com/hc/en-us/

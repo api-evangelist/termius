@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  title: Termius API Bridge group API
+  description: "# Welcome\nYou are viewing the REST API documentation for the Termius API Bridge. It is an interactive page that allows you to explore the API endpoints and their parameters.\n\n## Get started\nTermius API Bridge is a REST API that enables you to create and delete hosts as well as create groups in your Termius vaults.\n\nExample of the API call with `curl` for the API Bridge deployed to the `localhost:8080`:\n\n<pre> curl -X POST http://localhost:8080/v1/host/test/ \\\n -H \"Content-Type: application/json\" \\\n -d '{\n       \"vault\": \"Vault_name\",\n       \"address\": \"example.com\",\n       \"label\": \"Database\",\n       \"ssh\": {\n         \"port\": 22,\n         \"credentials\": {\n           \"username\": \"username\",\n           \"password\": \"password\"\n         }\n       }\n     }'\n</pre>\n\nThe full documentation and the list of the API endpoints is <a rel=\"noopener noreferrer\" href=\"#operations-tag-host\">down bellow on the page</a>.\nTo try the API endpoints, click on the **Try it out** button and fill in the required fields: **path** and **body**.\n\n## Help\nIf you have any questions about Termius API Bridge please send your requests on [our support portal](https://support.termius.com/hc/en-us/requests/new)."
+  termsOfService: https://termius.com/terms-of-use
+  contact:
+    email: support@termius.com
+  license:
+    name: Proprietary and confidential
+  version: 0.0.1
+tags:
+- name: group
+  description: Create a new Group
+paths:
+  /v1/group/{external_id}/:
+    post:
+      tags:
+      - group
+      operationId: createGroup
+      summary: Create a new Group in the vault
+      description: "Pass a vault name in the `vault` field and the group `label`.\n\nExample of the request that creates a new group in `Team` vault with\n`external_id` as `client-123`, label `John Doe`,\nssh port `22`, and ssh credentials in `username` and `password`\nproperties, and SSH key in the `key` property:\n\n- path: `/v1/group/client-123/`\n- body:\n  ```\n  {\n    \"vault\": \"Team\",\n    \"label\": \"John Doe\",\n    \"ssh\": {\n      \"port\": 22,\n      \"credentials\": {\n        \"username\": \"username\",\n        \"password\": \"password\",\n        \"key\": {\n          \"label\": \"shared with the team\",\n          \"private\": \"-----BEGIN OPENSSH PRIVATE KEY-----\\nb3Blbn...\"\n        }\n      }\n    }\n  }\n  ```\n\nOptionally, pass the parent group `external_id` in the `group` field\ninstead of the `vault`.\nCreate a parent group via this API before creating a nested group.\n"
+      parameters:
+      - $ref: '#/components/parameters/GroupExternalID'
+      requestBody:
+        $ref: '#/components/requestBodies/Group'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateGroupResponse'
+        '400':
+          description: Failed request. Check the request body.
+components:
+  schemas:
+    Group:
+      type: object
+      required:
+      - label
+      allOf:
+      - $ref: '#/components/schemas/GroupReference'
+      - $ref: '#/components/schemas/VaultReference'
+      example:
+        vault: Team
+        label: Client John Doe
+      properties:
+        label:
+          type: string
+          example: Client John Doe
+        ssh:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              allOf:
+              - $ref: '#/components/schemas/Credentials'
+              properties:
+                key:
+                  $ref: '#/components/schemas/SShKey'
+        telnet:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              $ref: '#/components/schemas/Credentials'
+    SShKey:
+      required:
+      - label
+      - private
+      properties:
+        label:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
+    Credentials:
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Port:
+      type: integer
+      format: int64
+      default: 22
+      minimum: 1
+      maximum: 65535
+    CreateGroupResponse:
+      type: object
+    GroupReference:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          type: string
+          example: client-1234
+    VaultReference:
+      type: object
+      required:
+      - vault
+      properties:
+        vault:
+          type: string
+          example: Team
+  parameters:
+    GroupExternalID:
+      name: external_id
+      in: path
+      description: Group ID in your original system, e.g., a client id.
+      required: true
+      example: client-1234
+      schema:
+        type: string
+  requestBodies:
+    Group:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Group'
+externalDocs:
+  description: Termius Documentation
+  url: https://support.termius.com/hc/en-us/
