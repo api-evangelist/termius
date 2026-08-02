@@ -1,0 +1,333 @@
+# Copyright (c) 2024 Termius Corporation.
+---
+openapi: 3.0.3
+info:
+  title: Termius API Bridge
+  description: >-
+    # Welcome
+
+    You are viewing the REST API documentation for the Termius API Bridge.
+    It is an interactive page that allows you to explore the API endpoints and
+    their parameters.
+
+
+    ## Get started
+
+    Termius API Bridge is a REST API that enables you to create and delete hosts
+    as well as create groups in your Termius vaults.
+
+
+    Example of the API call with `curl` for the API Bridge deployed to the
+    `localhost:8080`:
+
+
+    <pre>
+    curl -X POST http://localhost:8080/v1/host/test/ \
+     -H "Content-Type: application/json" \
+     -d '{
+           "vault": "Vault_name",
+           "address": "example.com",
+           "label": "Database",
+           "ssh": {
+             "port": 22,
+             "credentials": {
+               "username": "username",
+               "password": "password"
+             }
+           }
+         }'
+    </pre>
+
+
+    The full documentation and the list of the API endpoints is
+    <a rel="noopener noreferrer" href="#operations-tag-host">down bellow on the
+    page</a>.
+
+    To try the API endpoints, click on the **Try it out** button and fill in
+    the required fields: **path** and **body**.
+
+
+    ## Help
+
+    If you have any questions about Termius API Bridge please send your requests
+    on [our support portal](https://support.termius.com/hc/en-us/requests/new).
+  termsOfService: https://termius.com/terms-of-use
+  contact:
+    email: support@termius.com
+  license:
+    name: Proprietary and confidential
+  version: 0.0.1
+externalDocs:
+  description: Termius Documentation
+  url: https://support.termius.com/hc/en-us/
+tags:
+  - name: host
+    description: Create or Delete a host inside the vault or the group
+  - name: group
+    description: Create a new Group
+paths:
+  /v1/group/{external_id}/:
+    post:
+      tags: [group]
+      operationId: createGroup
+      summary: Create a new Group in the vault
+      description: |
+        Pass a vault name in the `vault` field and the group `label`.
+
+        Example of the request that creates a new group in `Team` vault with
+        `external_id` as `client-123`, label `John Doe`,
+        ssh port `22`, and ssh credentials in `username` and `password`
+        properties, and SSH key in the `key` property:
+
+        - path: `/v1/group/client-123/`
+        - body:
+          ```
+          {
+            "vault": "Team",
+            "label": "John Doe",
+            "ssh": {
+              "port": 22,
+              "credentials": {
+                "username": "username",
+                "password": "password",
+                "key": {
+                  "label": "shared with the team",
+                  "private": "-----BEGIN OPENSSH PRIVATE KEY-----\nb3Blbn..."
+                }
+              }
+            }
+          }
+          ```
+
+        Optionally, pass the parent group `external_id` in the `group` field
+        instead of the `vault`.
+        Create a parent group via this API before creating a nested group.
+      parameters:
+        - $ref: '#/components/parameters/GroupExternalID'
+      requestBody:
+        $ref: '#/components/requestBodies/Group'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateGroupResponse'
+        '400':
+          description: Failed request. Check the request body.
+  /v1/host/{external_id}/:
+    post:
+      tags: [host]
+      summary: Create a new Host in the vault
+      description: |
+        Pass the host ID in your infrastructure as `external_id` in the API
+        path, the vault name in the `vault`, `address`, and optional `label`
+        fields. Additionally, pass the ssh port in `port` field inside the
+        `ssh` object or telnet port in `port` inside the `telnet` object.
+
+        To see the full schema of the request, click on the **Schema** in
+        **Request body** below.
+
+        Example of the request that creates a new host with `external_id` as
+        `vm-1234` in `Team` vault with address `example.com`, label `Database`,
+        ssh port `22`, and ssh credentials in `username` and `password`
+        properties, and SSH key in the `key` property:
+
+        - path: `/v1/host/vm-1234/`
+        - body:
+          ```
+          {
+            "vault": "Team",
+            "address": "example.com",
+            "label": "Database",
+            "ssh": {
+              "port": 22,
+              "credentials": {
+                "username": "username",
+                "password": "password",
+                "key": {
+                  "label": "shared with the team",
+                  "private": "-----BEGIN OPENSSH PRIVATE KEY-----\nb3Blbn..."
+                }
+              }
+            }
+          }
+          ```
+
+        Optionally, pass the `group` field with the group `external_id` instead
+        of the vault. Create such a group with the
+        <a rel="noopener noreferrer" href="#operations-group-createGroup">
+        <code>/group/{external_id}/</code> API</a>.
+      operationId: createHost
+      parameters:
+        - $ref: '#/components/parameters/HostExternalID'
+      requestBody:
+        $ref: '#/components/requestBodies/Host'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateHostResponse'
+        '400':
+          description: Failed request. Check the request body.
+    delete:
+      tags: [host]
+      summary: Delete the Host
+      operationId: deleteHost
+      description: |
+        Pass the host id in your infrastructure as `external_id` in the API
+        path.
+
+        Example of the request that deletes the host with `external_id` as
+        `vm-1234`:
+
+        - path: `/v1/host/vm-1234/`
+      parameters:
+        - $ref: '#/components/parameters/HostExternalID'
+      responses:
+        '204':
+          description: successful operation
+        '400':
+          description: Failed request. Check the request body.
+components:
+  schemas:
+    Port:
+      type: integer
+      format: int64
+      default: 22
+      minimum: 1
+      maximum: 65535
+    Credentials:
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    SShKey:
+      required: [label, private]
+      properties:
+        label:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
+    GroupReference:
+      type: object
+      required: [group]
+      properties:
+        group:
+          type: string
+          example: client-1234
+    VaultReference:
+      type: object
+      required: [vault]
+      properties:
+        vault:
+          type: string
+          example: Team
+    Group:
+      type: object
+      required:
+        - label
+      allOf:
+        - $ref: '#/components/schemas/GroupReference'
+        - $ref: '#/components/schemas/VaultReference'
+      example:
+        vault: Team
+        label: Client John Doe
+      properties:
+        label:
+          type: string
+          example: Client John Doe
+        ssh:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              allOf:
+                - $ref: '#/components/schemas/Credentials'
+              properties:
+                key:
+                  $ref: '#/components/schemas/SShKey'
+        telnet:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              $ref: '#/components/schemas/Credentials'
+    CreateGroupResponse:
+      type: object
+    Host:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/GroupReference'
+        - $ref: '#/components/schemas/VaultReference'
+      required:
+        - address
+      example:
+        vault: Team
+        address: some.address.for.connection
+      properties:
+        address:
+          type: string
+          example: example.com
+        label:
+          type: string
+          example: Database
+        tags:
+          type: array
+          items:
+            type: string
+        ssh:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              allOf:
+                - $ref: '#/components/schemas/Credentials'
+              properties:
+                key:
+                  $ref: '#/components/schemas/SShKey'
+        telnet:
+          type: object
+          properties:
+            port:
+              $ref: '#/components/schemas/Port'
+            credentials:
+              $ref: '#/components/schemas/Credentials'
+    CreateHostResponse:
+      type: object
+  requestBodies:
+    Host:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Host'
+    Group:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Group'
+  parameters:
+    HostExternalID:
+      name: external_id
+      in: path
+      description: Host ID in your original system
+      required: true
+      example: vm-1234
+      schema:
+        type: string
+    GroupExternalID:
+      name: external_id
+      in: path
+      description: Group ID in your original system, e.g., a client id.
+      required: true
+      example: client-1234
+      schema:
+        type: string

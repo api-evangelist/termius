@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://termius.com/, https://status.termius.com/, https://termius.com/changelog/desktop-changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://termius.com/api-docs/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal API deprecation / Sunset-header policy published for the API Bridge.
+sla:
+  url: null
+status_page: https://status.termius.com/
+changelog:
+  desktop: https://termius.com/changelog/desktop-changelog
+  ios: https://termius.com/changelog/ios-changelog
+  android: https://termius.com/changelog/android-changelog
+  note: Changelogs are per-app (Desktop / iOS / Android); the API Bridge spec is versioned 0.0.1.
+deprecated_operations: []

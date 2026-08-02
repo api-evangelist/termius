@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+url: https://security.termius.com
+security_page: https://termius.com/security
+certifications:
+  - SOC 2
+evidence:
+  - source: https://termius.com/llms.txt
+    detail: >-
+      "Termius Security Center: Security overview, whitepaper SOC2 report" —
+      links the Security Center at security.termius.com.
+  - source: https://security.termius.com
+    kind: trust-center
+    note: JavaScript-rendered trust center (SafeBase-style); SOC 2 report referenced.
+note: >-
+  Termius operates a Security Center / Trust Center at security.termius.com with a
+  published SOC 2 report and security whitepaper. Only SOC 2 was confirmed by name
+  in this pass; other frameworks (ISO 27001, etc.) were not verified.

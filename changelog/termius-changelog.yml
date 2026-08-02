@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://termius.com/changelog/desktop-changelog
+scheme: per-app dated changelogs
+note: >-
+  Termius publishes dated product changelogs per platform rather than a single
+  API changelog. The API Bridge itself is versioned via the OpenAPI info.version
+  (currently 0.0.1). Entry detail was not harvested in this pass beyond the
+  canonical changelog URLs below.
+channels:
+  - platform: desktop
+    url: https://termius.com/changelog/desktop-changelog
+    covers: Windows, Linux, macOS
+  - platform: ios
+    url: https://termius.com/changelog/ios-changelog
+    covers: iOS, iPadOS
+  - platform: android
+    url: https://termius.com/changelog/android-changelog
+    covers: Android
+entries: []

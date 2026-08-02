@@ -1,8 +1,27 @@
 aid: termius
 name: Termius
-description: 'Termius is a company surfaced as a portfolio company of initialized-capital and added to
-  the API Evangelist network as a stub for enrichment. Sector: enterprise-saas. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Termius is a modern, cross-platform SSH client for DevOps professionals, network
+  engineers, and infrastructure teams, available on Windows, macOS, Linux, iOS,
+  iPadOS, and Android. It provides secure remote access with encrypted team vaults,
+  shared and synced credentials, SSH keys, snippets, SFTP, port forwarding, jump
+  hosts, and session organization. For programmatic use Termius ships the API
+  Bridge — a self-hosted REST API (OpenAPI 3.0) that encrypts infrastructure data
+  locally and pushes hosts and groups into a Termius Team vault — plus an official
+  command-line client. The company also runs a Security Center with a SOC 2 report.
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/images/JcjJ8OLLESSIHYJ4Rdi4fZmDkQw.png
 url: https://raw.githubusercontent.com/api-evangelist/termius/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,11 +31,43 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Enterprise Saas
-apis: []
+- SSH
+- SSH Client
+- Terminal
+- Developer Tools
+- DevOps
+- Infrastructure
+- Security
+- Remote Access
+apis:
+- aid: termius:termius-group-api
+  name: Termius group API
+  description: Create a new Group
+  humanURL: https://termius.com/api-docs/
+  baseURL: http://localhost:8080
+  tags:
+  - group
+  properties:
+  - type: OpenAPI
+    url: openapi/termius-group-api-openapi.yml
+  - type: APIReference
+    url: https://termius.com/api-docs/
+- aid: termius:termius-host-api
+  name: Termius host API
+  description: Create or Delete a host inside the vault or the group
+  humanURL: https://termius.com/api-docs/
+  baseURL: http://localhost:8080
+  tags:
+  - host
+  properties:
+  - type: OpenAPI
+    url: openapi/termius-host-api-openapi.yml
+  - type: APIReference
+    url: https://termius.com/api-docs/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +76,70 @@ maintainers:
 common:
 - type: Website
   url: https://termius.com/
+- type: Documentation
+  url: https://docs.termius.com
+- type: APIReference
+  url: https://termius.com/api-docs/
+- type: GettingStarted
+  url: https://termius.com/documentation/getting-started
+- type: Support
+  url: https://support.termius.com/hc/en-us/
+- type: Blog
+  url: https://termius.com/blog
+- type: GitHubOrganization
+  url: https://github.com/termius
+- type: Pricing
+  url: https://termius.com/pricing
+- type: SignUp
+  url: https://account.termius.com/signup
+- type: TermsOfService
+  url: https://termius.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://termius.com/privacy-policy
+- type: StatusPage
+  url: https://status.termius.com/
+- type: ChangeLog
+  url: changelog/termius-changelog.yml
+- type: Security
+  url: https://termius.com/security
+- type: TrustCenter
+  url: https://security.termius.com
+- type: Compliance
+  url: https://security.termius.com
+- type: LLMsTxt
+  url: llms/termius-llms.txt
+- type: WellKnown
+  url: well-known/termius-well-known.yml
+- type: SecurityTxt
+  url: well-known/termius-security.txt
+- type: MCPServer
+  url: mcp/termius-mcp.yml
+- type: Conformance
+  url: conformance/termius-conformance.yml
+- type: ErrorCatalog
+  url: errors/termius-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/termius-lifecycle.yml
+- type: Authentication
+  url: authentication/termius-authentication.yml
+- type: DomainSecurity
+  url: security/termius-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/termius-vulnerability-disclosure.yml
+- type: Conventions
+  url: conventions/termius-conventions.yml
+- type: Idempotency
+  url: conventions/termius-conventions.yml
+- type: DataModel
+  url: data-model/termius-data-model.yml
+- type: CLI
+  url: cli/termius-cli.yml
+- type: Packages
+  url: packages/termius-packages.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1

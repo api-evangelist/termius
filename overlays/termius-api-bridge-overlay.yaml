@@ -1,0 +1,31 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Termius API Bridge
+  version: 1.0.0
+extends: openapi/termius-api-bridge-openapi-original.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: termius
+      x-apievangelist-artifact-set:
+        - authentication/termius-authentication.yml
+        - conventions/termius-conventions.yml
+        - errors/termius-problem-types.yml
+        - data-model/termius-data-model.yml
+        - lifecycle/termius-lifecycle.yml
+      x-idempotency:
+        supported: true
+        style: resource-key-upsert
+        key: external_id
+  - target: $.servers
+    update:
+      - url: http://localhost:8080
+        description: >-
+          Self-hosted API Bridge container (default). The bridge encrypts data
+          locally and pushes to the Termius Team vault.
+  - target: "$.paths['/v1/host/{external_id}/'].post"
+    update:
+      x-agentic-consequence: write
+  - target: "$.paths['/v1/host/{external_id}/'].delete"
+    update:
+      x-agentic-consequence: write

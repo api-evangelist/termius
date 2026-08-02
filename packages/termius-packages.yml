@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/termius, https://pypi.org/project/termius/, https://hub.docker.com/r/termius/api-bridge
+packages:
+  - language: python
+    registry: pypi
+    name: termius
+    url: https://pypi.org/project/termius/
+    install: pip install -U termius
+    official: true
+    note: >-
+      Official Termius CLI (formerly serverauditor-sshconfig). Source at
+      github.com/termius/termius-cli; repository archived (read-only) 2025-03-23.
+  - language: shell
+    registry: docker-hub
+    name: termius/api-bridge
+    url: https://hub.docker.com/r/termius/api-bridge
+    install: docker pull termius/api-bridge
+    official: true
+    note: >-
+      Termius API Bridge — self-hosted Docker container exposing the REST API
+      Bridge (localhost:8080) that encrypts infrastructure data locally and
+      pushes hosts/groups into a Termius Team vault. Requires a Team plan.
+  - language: shell
+    registry: homebrew
+    name: termius
+    url: https://formulae.brew.sh/
+    install: brew install termius
+    official: true
+    note: CLI install path documented in the official termius-cli README.

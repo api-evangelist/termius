@@ -1,0 +1,21 @@
+{
+  "provider": "termius",
+  "sources": [
+    "termius-group-api-openapi.yml",
+    "termius-host-api-openapi.yml",
+    "scratch/api-doc.yml"
+  ],
+  "outputs": [
+    "termius-group-api-openapi.yml",
+    "termius-host-api-openapi.yml"
+  ],
+  "archived": [
+    "archived scratch/api-doc.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "discovered stray spec: scratch/api-doc.yml"
+  ],
+  "skipped": []
+}

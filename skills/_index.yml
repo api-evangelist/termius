@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/termius-api-bridge-openapi-original.yml
+skills:
+  - file: termius-create-host.md
+    name: Create a host in a Termius vault
+    api: openapi/termius-api-bridge-openapi-original.yml
+    operations: [createHost]
+  - file: termius-create-group-and-host.md
+    name: Create a group and add a host to it
+    api: openapi/termius-api-bridge-openapi-original.yml
+    operations: [createGroup, createHost]
+  - file: termius-delete-host.md
+    name: Delete a host from a Termius vault
+    api: openapi/termius-api-bridge-openapi-original.yml
+    operations: [deleteHost]

@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/termius/termius-cli
+name: termius
+description: >-
+  Official command-line interface for the Termius SSH client. Logs in to a
+  Termius account, pulls and pushes hosts/groups/keys, imports existing SSH
+  config, and connects to hosts. Formerly named serverauditor-sshconfig.
+repository: https://github.com/termius/termius-cli
+status: archived            # repository archived read-only 2025-03-23
+package: pypi:termius
+install:
+  - method: pip
+    command: pip install -U termius
+  - method: homebrew
+    command: brew install termius
+  - method: bootstrap
+    command: "curl -sSL https://raw.githubusercontent.com/termius/termius-cli/master/bootstrap.sh | bash"
+commands:
+  - name: init
+    summary: Log in, pull data, import local SSH config, and push — one-shot setup.
+  - name: login
+    summary: Authenticate to termius.com.
+  - name: logout
+    summary: End the local session.
+  - name: pull
+    summary: Pull hosts, groups, and keys from termius.com into local storage.
+  - name: push
+    summary: Push local hosts, groups, and keys up to termius.com.
+  - name: host
+    summary: Create or update a host (e.g. --address, --label).
+  - name: group
+    summary: Create or update a group of hosts.
+  - name: connect
+    summary: Open an SSH session to a stored host by label.
+  - name: import-ssh-config
+    summary: Import hosts from an existing ~/.ssh/config file.
+  - name: export-ssh-config
+    summary: Export stored hosts back out to SSH config format.

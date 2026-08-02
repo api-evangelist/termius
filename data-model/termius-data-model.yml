@@ -1,0 +1,53 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/termius-api-bridge-openapi-original.yml
+note: >-
+  Entity-relationship graph derived from the Termius API Bridge OpenAPI schemas
+  and the external_id reference keys.
+entities:
+  - name: Vault
+    description: A Termius vault (e.g. a Team vault) that holds groups and hosts.
+    key: vault (name)
+  - name: Group
+    description: A named group inside a vault; may be nested under a parent group.
+    key: external_id
+    fields: [label, vault, group, ssh, telnet]
+  - name: Host
+    description: A connectable host (SSH or Telnet endpoint) inside a vault or group.
+    key: external_id
+    fields: [address, label, tags, vault, group, ssh, telnet]
+  - name: Credentials
+    description: Username/password credentials, optionally carrying an SSH key.
+    fields: [username, password, key]
+  - name: SShKey
+    description: An SSH private/public key pair with a label.
+    fields: [label, private, public]
+relationships:
+  - from: Group
+    to: Vault
+    type: belongs_to
+    via: vault
+  - from: Group
+    to: Group
+    type: belongs_to
+    via: group          # nested/parent group reference
+  - from: Host
+    to: Vault
+    type: belongs_to
+    via: vault
+  - from: Host
+    to: Group
+    type: belongs_to
+    via: group
+  - from: Host
+    to: Credentials
+    type: has_one
+    via: ssh.credentials / telnet.credentials
+  - from: Group
+    to: Credentials
+    type: has_one
+    via: ssh.credentials / telnet.credentials
+  - from: Credentials
+    to: SShKey
+    type: has_one
+    via: key

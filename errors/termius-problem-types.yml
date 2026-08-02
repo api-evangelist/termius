@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/termius-api-bridge-openapi-original.yml
+format: plain            # spec does not use application/problem+json (RFC 9457)
+note: >-
+  Derived from the Termius API Bridge OpenAPI responses. The spec documents only
+  generic status-level failures; there is no structured problem+json error
+  envelope or an error-code registry published for the API Bridge.
+problems:
+  - status: 400
+    title: Failed request. Check the request body.
+    source_operations:
+      - openapi/termius-api-bridge-openapi-original.yml#createGroup
+      - openapi/termius-api-bridge-openapi-original.yml#createHost
+      - openapi/termius-api-bridge-openapi-original.yml#deleteHost
+  - status: 200
+    title: Successful operation (create host / create group)
+    source_operations:
+      - openapi/termius-api-bridge-openapi-original.yml#createGroup
+      - openapi/termius-api-bridge-openapi-original.yml#createHost
+  - status: 204
+    title: Successful operation (delete host)
+    source_operations:
+      - openapi/termius-api-bridge-openapi-original.yml#deleteHost

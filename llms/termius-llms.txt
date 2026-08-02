@@ -1,0 +1,77 @@
+# Termius (https://termius.com)
+
+> Termius is a modern SSH client designed to improve productivity and collaboration for DevOps professionals, network engineers, and infrastructure teams. It provides secure remote access, shared credentials, team vaults, autocomplete, and session organization tools — all with cross-platform support on iOS, Andrdoid, iPad, Windows, Linux, MacOS.
+
+## Website
+
+- https://termius.com: Main site and access point.
+- https://docs.termius.com: Documentation.
+- https://support.termius.com: Help center and support knowledge base.
+
+## About Us
+
+Termius is built for modern infrastructure teams who want to manage servers and remote systems more efficiently. From solo sysadmins to enterprise DevOps teams, Termius makes it easy to connect, collaborate, and secure infrastructure. It works across macOS, Windows, Linux, iOS, and Android.
+
+## Documentation
+
+- [What is Termius](https://termius.com/documentation/what-is-termius): Overview of Termius and its use cases.
+- [Getting Started](https://termius.com/documentation/getting-started): Learn how to set up and start using Termius.
+- [Installation](https://termius.com/documentation/installation): Install Termius on desktop and mobile platforms.
+- [Set Up Vaults](https://termius.com/documentation/set-up-vaults): How to create and manage encrypted vaults.
+- [Import from SecureCRT](https://termius.com/documentation/import-from-securecrt): Steps to import data from SecureCRT.
+- [Import from PuTTY](https://termius.com/documentation/import-from-putty): Steps to import PuTTY sessions.
+- [Import from MobaXterm](https://termius.com/documentation/import-from-mobaxterm): Migrate from MobaXterm to Termius.
+- [Import from SSH Config](https://termius.com/documentation/import-from-ssh-config): Use existing SSH config in Termius.
+- [Import from CSV](https://termius.com/documentation/importing-from-csv): Import your data using a CSV file.
+- [Connect via Password](https://termius.com/documentation/connect-via-ssh-with-a-password): Use password authentication.
+- [Connect via SSH Key](https://termius.com/documentation/connect-via-ssh-with-an-ssh-key): Connect using SSH keys.
+- [Connect with SFTP](https://termius.com/documentation/connect-with-sftp): Transfer files with SFTP.
+- [Connect with Telnet](https://termius.com/documentation/connect-with-telnet): Connect to legacy devices using Telnet.
+- [Connect via Serial](https://termius.com/documentation/connect-via-serial): Serial port connection guide.
+- [Local Terminal](https://termius.com/documentation/local-terminal): Use the terminal without a remote host.
+- [Port Forwarding](https://termius.com/documentation/port-forwarding): Securely forward ports via SSH.
+- [Jump Hosts](https://termius.com/documentation/jump-hosts): Configure and use SSH ProxyJump.
+- [Proxy](https://termius.com/documentation/proxy): Route connections through a proxy.
+- [Sync to Mobile](https://termius.com/documentation/sync-to-mobile): Sync data between desktop and mobile.
+- [Collaborate](https://termius.com/documentation/collaborate): Work with your team using shared vaults and snippets.
+- [Glossary](https://termius.com/documentation/glossary): Definitions of terms used in Termius.
+- [Generate SSH Key](https://termius.com/documentation/generate-ssh-key): Create a new SSH key.
+- [Copy SSH Key to Server](https://termius.com/documentation/copy-ssh-key-to-server): Add your public key to a remote server.
+- [SSH Certificates](https://termius.com/documentation/ssh-certificates): Use certificate-based authentication.
+- [Connect with FIDO2](https://termius.com/documentation/connect-using-fido2): Use FIDO2 devices to authenticate.
+- [Generate a FIDO2 Key](https://termius.com/documentation/generate-a-fido2-key): Create a new FIDO2 credential.
+- [Import a FIDO2 Key](https://termius.com/documentation/import-a-fido2-key): Add an existing FIDO2 key.
+- [Android Biometric Keys](https://termius.com/documentation/android-biometric-keys): Set up biometrics on Android.
+- [Windows Hello](https://termius.com/documentation/windows-hello): Use Windows Hello with SSH.
+- [Apple Secure Enclave](https://termius.com/documentation/apple-secure-enclave): Use Apple’s hardware-backed key storage.
+- [Identities](https://termius.com/documentation/identities): Manage user identities in Termius.
+- [Secure Credentials Sync](https://termius.com/documentation/secure-credentials-sync): How Termius syncs sensitive data securely.
+- [Secure Credentials Sharing](https://termius.com/documentation/secure-credentials-sharing): Share credentials with teammates.
+- [Vaults Overview](https://termius.com/documentation/vaults-overview): Detailed description of vault types.
+- [Organizing Data](https://termius.com/documentation/organizing-data): Organize hosts, keys, and credentials.
+- [Manage Vaults](https://termius.com/documentation/manage-vaults): Create, rename, and remove vaults.
+- [Sharing with the Team](https://termius.com/documentation/sharing-with-the-team): Best practices for collaboration.
+- [Encryption](https://termius.com/documentation/encryption): Learn how Termius protects your data.
+- [Account and Subscriptions](https://termius.com/documentation/account-and-subscriptions): Manage your account and billing.
+
+## Resources
+- [Termius Blog](https://termius.com/blog): Product announcements, use cases, and tips.
+- [Termius Open Source Program](https://termius.com/opensource): Get a free Termius Business Account for open source teams.
+- [Termius Security Center]https://security.termius.com: Security overview, whitepaper SOC2 report.
+
+##Downloads
+- [Best SSH Client Windows](https://termius.com/free-ssh-client-for-windows): Termius is a powerful SSH client for Windows users.
+- [Free SSH Client Linux](https://termius.com/free-ssh-client-for-linux): Free SSH client for Linux with robust features and security.
+- [Free SSH Client macOS](https://termius.com/free-ssh-client-for-mac-os): Free SSH client for macOS with robust security features.
+- [Free SSH Client iPad](https://termius.com/free-ssh-client-for-ipad): Discover the best free SSH client for iPad users.
+- [Free SSH Client Android](https://termius.com/free-ssh-client-for-android): Free SSH client for Android with advanced features and security.
+- [Free SSH Client iPhone](https://termius.com/free-ssh-client-for-iphone): Discover the best free SSH client for iPhone users.
+
+##Changelog
+- [Desktop Changelog](https://termius.com/changelog/desktop-changelog): Product changes on Windows, Linux, and macOS.
+- [Android Changelog](https://termius.com/changelog/ios-changelog): Product changes on iOS and iPadOS.
+- [iOS Changelog](https://termius.com/changelog/android-changelog): Product changes on Android.
+
+## How to Get Started
+- [Pricing](https://termius.com/pricing): Pricing ranges from free, self-serve pro plans, and custom enterprise pricing
+- [Signup](https://account.termius.com/signup): Sign up to try out the product today

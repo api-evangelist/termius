@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/termius-api-bridge-openapi-original.yml
+docs: https://termius.com/api-docs/
+summary: >-
+  Cross-cutting request/response semantics for the Termius API Bridge, a
+  self-hosted REST API that pushes hosts and groups into a Termius Team vault.
+authentication:
+  style: >-
+    The REST API is exposed by a locally-run API Bridge container (localhost:8080)
+    and is not itself token-authenticated at the HTTP layer. Provisioning the
+    bridge requires a Termius Team plan and an API Bridge key configured in the
+    container, which the bridge uses to authenticate and encrypt data before
+    pushing to the Termius cloud vault.
+  see: authentication/termius-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  example: /v1/host/{external_id}/
+media_type: application/json
+idempotency:
+  supported: true
+  style: resource-key-upsert
+  key: external_id
+  location: path
+  detail: >-
+    Every create operation is keyed on external_id — "the host/group ID in your
+    original system". Re-issuing createHost/createGroup with the same external_id
+    updates the same vault resource rather than creating a duplicate, so writes
+    are safe to retry. deleteHost is likewise idempotent on external_id. There is
+    no separate Idempotency-Key header; the path key is the idempotency contract.
+  see: https://termius.com/blog/keep-connection-details-up-to-date-with-api-bridge
+pagination:
+  supported: false
+  detail: The API Bridge exposes only create/delete write operations; no list/read endpoints.
+error_envelope:
+  detail: >-
+    Failures return generic status-level responses (400 "Failed request. Check
+    the request body."); no structured problem+json envelope is published.
+  see: errors/termius-problem-types.yml
+rate_limiting:
+  documented: false
+lifecycle:
+  see: lifecycle/termius-lifecycle.yml

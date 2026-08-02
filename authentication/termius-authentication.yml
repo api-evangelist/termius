@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: searched
+source: https://termius.com/api-docs/, https://termius.com/blog/keep-connection-details-up-to-date-with-api-bridge
+docs: https://support.termius.com/hc/en-us/
+summary:
+  types: []            # no securitySchemes declared in the OpenAPI
+  model: api-bridge-key
+detail: >-
+  The Termius API Bridge OpenAPI declares no HTTP-layer securitySchemes: the REST
+  API is served by a container the customer runs locally (default localhost:8080)
+  and is reached over the local network. Trust is established out of band — using
+  the API Bridge requires a Termius Team plan, and an API Bridge is provisioned
+  from the Team's API Bridge page, which issues the key the bridge uses to
+  authenticate to the Termius cloud and to encrypt infrastructure data locally
+  before pushing it into the Team vault. There is no public OAuth or API-key
+  scheme for direct cloud API access.
+schemes: []
+plan_requirement: Team

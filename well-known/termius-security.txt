@@ -1,0 +1,3 @@
+Contact: security@termius.com
+Encryption: https://termius.com/.well-known/pgp-key-D8E58228.asc
+Canonical: https://termius.com/.well-known/security.txt.sig
