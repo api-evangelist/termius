@@ -1,6 +1,7 @@
 generated: '2026-07-21'
 method: derived
-status: candidate        # no official Termius MCP server found as of this pass
+status: candidate
+status_raw: candidate
 source: openapi/termius-api-bridge-openapi-original.yml
 note: >-
   No official/hosted Termius MCP server was found (docs, npm @modelcontextprotocol,
