@@ -3,21 +3,25 @@ method: derived
 status: candidate
 status_raw: candidate
 source: openapi/termius-api-bridge-openapi-original.yml
-note: >-
-  No official/hosted Termius MCP server was found (docs, npm @modelcontextprotocol,
-  MCP registries). Candidate tool list derived one-per-operation from the Termius
-  API Bridge OpenAPI. The API Bridge is self-hosted (localhost:8080), so any MCP
-  wrapper would run alongside the bridge container.
+note: No official/hosted Termius MCP server was found (docs, npm @modelcontextprotocol, MCP registries).
+  Candidate tool list derived one-per-operation from the Termius API Bridge OpenAPI. The API Bridge is
+  self-hosted (localhost:8080), so any MCP wrapper would run alongside the bridge container.
 server:
   name: termius-api-bridge
   transport: http
 tools:
-  - name: create_group
-    description: Create a new group in a Termius vault (or nested under a parent group).
-    source_operation: openapi/termius-api-bridge-openapi-original.yml#createGroup
-  - name: create_host
-    description: Create a new host in a Termius vault or group with SSH/Telnet credentials.
-    source_operation: openapi/termius-api-bridge-openapi-original.yml#createHost
-  - name: delete_host
-    description: Delete a host from the vault by its external_id.
-    source_operation: openapi/termius-api-bridge-openapi-original.yml#deleteHost
+- name: create_group
+  description: Create a new group in a Termius vault (or nested under a parent group).
+  source_operation: openapi/termius-api-bridge-openapi-original.yml#createGroup
+- name: create_host
+  description: Create a new host in a Termius vault or group with SSH/Telnet credentials.
+  source_operation: openapi/termius-api-bridge-openapi-original.yml#createHost
+- name: delete_host
+  description: Delete a host from the vault by its external_id.
+  source_operation: openapi/termius-api-bridge-openapi-original.yml#deleteHost
+deployment:
+  mode: none
+  verified: derived
+  tools: 3
+  checked: '2026-08-12'
+  source: catalog MCP census

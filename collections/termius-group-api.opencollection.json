@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Termius API Bridge group API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new Group in the vault",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/group/:external_id/",
+            "params": [
+              {
+                "name": "external_id",
+                "value": "client-1234",
+                "type": "path",
+                "description": "Group ID in your original system, e.g., a client id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pass a vault name in the `vault` field and the group `label`.\n\nExample of the request that creates a new group in `Team` vault with\n`external_id` as `client-123`, label `John Doe`,\nssh port `22`, and ssh credentials in `username` and `password`\nproperties, and SSH key in the `key` property:\n\n- path: `/v1/group/client-123/`\n- body:\n  ```\n  {\n    \"vault\": \"Team\",\n    \"label\": \"John Doe\",\n    \"ssh\": {\n      \"port\": 22,\n      \"credentials\": {\n        \"username\": \"username\",\n        \"password\": \"pass"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

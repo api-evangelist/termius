@@ -1,0 +1,177 @@
+{
+  "item": [
+    {
+      "id": "7990ada1-705b-4e87-b06a-07f5585e8bc3",
+      "name": "group",
+      "description": {
+        "content": "Create a new Group",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b42f339-8fbd-47af-bbc6-a390aa066daf",
+          "name": "Create a new Group in the vault",
+          "request": {
+            "name": "Create a new Group in the vault",
+            "description": {
+              "content": "Pass a vault name in the `vault` field and the group `label`.\n\nExample of the request that creates a new group in `Team` vault with\n`external_id` as `client-123`, label `John Doe`,\nssh port `22`, and ssh credentials in `username` and `password`\nproperties, and SSH key in the `key` property:\n\n- path: `/v1/group/client-123/`\n- body:\n  ```\n  {\n    \"vault\": \"Team\",\n    \"label\": \"John Doe\",\n    \"ssh\": {\n      \"port\": 22,\n      \"credentials\": {\n        \"username\": \"username\",\n        \"password\": \"password\",\n        \"key\": {\n          \"label\": \"shared with the team\",\n          \"private\": \"-----BEGIN OPENSSH PRIVATE KEY-----\\nb3Blbn...\"\n        }\n      }\n    }\n  }\n  ```\n\nOptionally, pass the parent group `external_id` in the `group` field\ninstead of the `vault`.\nCreate a parent group via this API before creating a nested group.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "group",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) Group ID in your original system, e.g., a client id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": \"<string>\",\n  \"label\": \"<string>\",\n  \"vault\": \"<string>\",\n  \"ssh\": {\n    \"port\": 22,\n    \"credentials\": {\n      \"key\": {\n        \"label\": \"<string>\",\n        \"private\": \"<string>\",\n        \"public\": \"<string>\"\n      },\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    }\n  },\n  \"telnet\": {\n    \"port\": 22,\n    \"credentials\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c96fa39b-bfb7-481f-a13a-64a9d06a7353",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) Group ID in your original system, e.g., a client id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51a008ee-3d54-4604-93bb-a4cfec9b0207",
+              "name": "Failed request. Check the request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "group",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) Group ID in your original system, e.g., a client id."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "21c4745f-f132-4681-83ab-614c0948f6c5",
+    "name": "Termius API Bridge group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Welcome\nYou are viewing the REST API documentation for the Termius API Bridge. It is an interactive page that allows you to explore the API endpoints and their parameters.\n\n## Get started\nTermius API Bridge is a REST API that enables you to create and delete hosts as well as create groups in your Termius vaults.\n\nExample of the API call with `curl` for the API Bridge deployed to the `localhost:8080`:\n\n<pre> curl -X POST http://localhost:8080/v1/host/test/ \\\n -H \"Content-Type: application/json\" \\\n -d '{\n       \"vault\": \"Vault_name\",\n       \"address\": \"example.com\",\n       \"label\": \"Database\",\n       \"ssh\": {\n         \"port\": 22,\n         \"credentials\": {\n           \"username\": \"username\",\n           \"password\": \"password\"\n         }\n       }\n     }'\n</pre>\n\nThe full documentation and the list of the API endpoints is <a rel=\"noopener noreferrer\" href=\"#operations-tag-host\">down bellow on the page</a>.\nTo try the API endpoints, click on the **Try it out** button and fill in the required fields: **path** and **body**.\n\n## Help\nIf you have any questions about Termius API Bridge please send your requests on [our support portal](https://support.termius.com/hc/en-us/requests/new).\n\nContact Support:\n Email: support@termius.com",
+      "type": "text/plain"
+    }
+  }
+}

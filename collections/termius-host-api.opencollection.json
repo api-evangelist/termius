@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Termius API Bridge group host API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "host",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new Host in the vault",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/host/:external_id/",
+            "params": [
+              {
+                "name": "external_id",
+                "value": "vm-1234",
+                "type": "path",
+                "description": "Host ID in your original system"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pass the host ID in your infrastructure as `external_id` in the API\npath, the vault name in the `vault`, `address`, and optional `label`\nfields. Additionally, pass the ssh port in `port` field inside the\n`ssh` object or telnet port in `port` inside the `telnet` object.\n\nTo see the full schema of the request, click on the **Schema** in\n**Request body** below.\n\nExample of the request that creates a new host with `external_id` as\n`vm-1234` in `Team` vault with address `example.com`, label `Database"
+        },
+        {
+          "info": {
+            "name": "Delete the Host",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/host/:external_id/",
+            "params": [
+              {
+                "name": "external_id",
+                "value": "vm-1234",
+                "type": "path",
+                "description": "Host ID in your original system"
+              }
+            ]
+          },
+          "docs": "Pass the host id in your infrastructure as `external_id` in the API\npath.\n\nExample of the request that deletes the host with `external_id` as\n`vm-1234`:\n\n- path: `/v1/host/vm-1234/`\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

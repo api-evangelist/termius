@@ -1,0 +1,297 @@
+{
+  "item": [
+    {
+      "id": "fae3320f-0486-4efe-bb2c-a00dd51fd743",
+      "name": "host",
+      "description": {
+        "content": "Create or Delete a host inside the vault or the group",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7549cd5f-18ec-4ca0-a3bc-407089b839d6",
+          "name": "Create a new Host in the vault",
+          "request": {
+            "name": "Create a new Host in the vault",
+            "description": {
+              "content": "Pass the host ID in your infrastructure as `external_id` in the API\npath, the vault name in the `vault`, `address`, and optional `label`\nfields. Additionally, pass the ssh port in `port` field inside the\n`ssh` object or telnet port in `port` inside the `telnet` object.\n\nTo see the full schema of the request, click on the **Schema** in\n**Request body** below.\n\nExample of the request that creates a new host with `external_id` as\n`vm-1234` in `Team` vault with address `example.com`, label `Database`,\nssh port `22`, and ssh credentials in `username` and `password`\nproperties, and SSH key in the `key` property:\n\n- path: `/v1/host/vm-1234/`\n- body:\n  ```\n  {\n    \"vault\": \"Team\",\n    \"address\": \"example.com\",\n    \"label\": \"Database\",\n    \"ssh\": {\n      \"port\": 22,\n      \"credentials\": {\n        \"username\": \"username\",\n        \"password\": \"password\",\n        \"key\": {\n          \"label\": \"shared with the team\",\n          \"private\": \"-----BEGIN OPENSSH PRIVATE KEY-----\\nb3Blbn...\"\n        }\n      }\n    }\n  }\n  ```\n\nOptionally, pass the `group` field with the group `external_id` instead\nof the vault. Create such a group with the\n<a rel=\"noopener noreferrer\" href=\"#operations-group-createGroup\">\n<code>/group/{external_id}/</code> API</a>.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "host",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) Host ID in your original system"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"<string>\",\n  \"group\": \"<string>\",\n  \"vault\": \"<string>\",\n  \"label\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ssh\": {\n    \"port\": 22,\n    \"credentials\": {\n      \"key\": {\n        \"label\": \"<string>\",\n        \"private\": \"<string>\",\n        \"public\": \"<string>\"\n      },\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    }\n  },\n  \"telnet\": {\n    \"port\": 22,\n    \"credentials\": {\n      \"username\": \"<string>\",\n      \"password\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fbae67f1-21c9-428c-90f2-b30437c160c4",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "host",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) Host ID in your original system"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22830e12-0b85-426d-960d-dd55a039cb47",
+              "name": "Failed request. Check the request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "host",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) Host ID in your original system"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e82ca471-4d19-4567-9f22-09da3f684d2d",
+          "name": "Delete the Host",
+          "request": {
+            "name": "Delete the Host",
+            "description": {
+              "content": "Pass the host id in your infrastructure as `external_id` in the API\npath.\n\nExample of the request that deletes the host with `external_id` as\n`vm-1234`:\n\n- path: `/v1/host/vm-1234/`\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "host",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) Host ID in your original system"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34148d84-0181-4098-808c-610458186033",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "host",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) Host ID in your original system"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e763e66-8f7f-47fc-9afb-7d4ceca8f7bf",
+              "name": "Failed request. Check the request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "host",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) Host ID in your original system"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2bfb1bd5-73b8-446f-8a17-e8b5def49386",
+    "name": "Termius API Bridge group host API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Welcome\nYou are viewing the REST API documentation for the Termius API Bridge. It is an interactive page that allows you to explore the API endpoints and their parameters.\n\n## Get started\nTermius API Bridge is a REST API that enables you to create and delete hosts as well as create groups in your Termius vaults.\n\nExample of the API call with `curl` for the API Bridge deployed to the `localhost:8080`:\n\n<pre> curl -X POST http://localhost:8080/v1/host/test/ \\\n -H \"Content-Type: application/json\" \\\n -d '{\n       \"vault\": \"Vault_name\",\n       \"address\": \"example.com\",\n       \"label\": \"Database\",\n       \"ssh\": {\n         \"port\": 22,\n         \"credentials\": {\n           \"username\": \"username\",\n           \"password\": \"password\"\n         }\n       }\n     }'\n</pre>\n\nThe full documentation and the list of the API endpoints is <a rel=\"noopener noreferrer\" href=\"#operations-tag-host\">down bellow on the page</a>.\nTo try the API endpoints, click on the **Try it out** button and fill in the required fields: **path** and **body**.\n\n## Help\nIf you have any questions about Termius API Bridge please send your requests on [our support portal](https://support.termius.com/hc/en-us/requests/new).\n\nContact Support:\n Email: support@termius.com",
+      "type": "text/plain"
+    }
+  }
+}
