@@ -50,6 +50,8 @@ apis:
   humanURL: https://termius.com/api-docs/
   baseURL: http://localhost:8080
   tags:
+  - Group
+  tags_raw:
   - group
   properties:
   - type: OpenAPI
@@ -62,6 +64,8 @@ apis:
   humanURL: https://termius.com/api-docs/
   baseURL: http://localhost:8080
   tags:
+  - Hosts
+  tags_raw:
   - host
   properties:
   - type: OpenAPI
