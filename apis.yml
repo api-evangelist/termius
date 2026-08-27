@@ -14,12 +14,14 @@ accessModel:
   onboarding: open
   trial: false
   try_now: false
-  public: true
+  public: false
   label: Open access
-  confidence: medium
+  confidence: low
+  try_now_blocked_by: loopback
   source:
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-08-26'
   method: derived
 image: https://framerusercontent.com/images/JcjJ8OLLESSIHYJ4Rdi4fZmDkQw.png
 url: https://raw.githubusercontent.com/api-evangelist/termius/refs/heads/main/apis.yml
