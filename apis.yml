@@ -9,6 +9,18 @@ description: >-
   Bridge — a self-hosted REST API (OpenAPI 3.0) that encrypts infrastructure data
   locally and pushes hosts and groups into a Termius Team vault — plus an official
   command-line client. The company also runs a Security Center with a SOC 2 report.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: open
