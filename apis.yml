@@ -78,7 +78,7 @@ apis:
   humanURL: https://termius.com/api-docs/
   baseURL: http://localhost:8080
   tags:
-  - Hosts
+  - host
   tags_raw:
   - host
   properties:
