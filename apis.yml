@@ -59,7 +59,7 @@ tags:
 - Remote Access
 apis:
 - aid: termius:termius-group-api
-  name: Termius group API
+  name: Termius Group API
   description: Create a new Group
   humanURL: https://termius.com/api-docs/
   baseURL: http://localhost:8080
@@ -73,7 +73,7 @@ apis:
   - type: APIReference
     url: https://termius.com/api-docs/
 - aid: termius:termius-host-api
-  name: Termius host API
+  name: Termius Host API
   description: Create or Delete a host inside the vault or the group
   humanURL: https://termius.com/api-docs/
   baseURL: http://localhost:8080

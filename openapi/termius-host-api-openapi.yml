@@ -136,12 +136,6 @@ components:
       example: vm-1234
       schema:
         type: string
-  requestBodies:
-    Host:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Host'
   schemas:
     Port:
       type: integer
@@ -190,25 +184,6 @@ components:
               $ref: '#/components/schemas/Port'
             credentials:
               $ref: '#/components/schemas/Credentials'
-    GroupReference:
-      type: object
-      required:
-      - group
-      properties:
-        group:
-          type: string
-          example: client-1234
-    SShKey:
-      required:
-      - label
-      - private
-      properties:
-        label:
-          type: string
-        private:
-          type: string
-        public:
-          type: string
     Credentials:
       properties:
         username:
@@ -223,6 +198,31 @@ components:
         vault:
           type: string
           example: Team
+    SShKey:
+      required:
+      - label
+      - private
+      properties:
+        label:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
+    GroupReference:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          type: string
+          example: client-1234
+  requestBodies:
+    Host:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Host'
 externalDocs:
   description: Termius Documentation
   url: https://support.termius.com/hc/en-us/
