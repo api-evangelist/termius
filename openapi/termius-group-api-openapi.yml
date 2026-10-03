@@ -90,63 +90,7 @@ paths:
         '400':
           description: Failed request. Check the request body.
 components:
-  requestBodies:
-    Group:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Group'
-  parameters:
-    GroupExternalID:
-      name: external_id
-      in: path
-      description: Group ID in your original system, e.g., a client id.
-      required: true
-      example: client-1234
-      schema:
-        type: string
   schemas:
-    Port:
-      type: integer
-      format: int64
-      default: 22
-      minimum: 1
-      maximum: 65535
-    CreateGroupResponse:
-      type: object
-    Credentials:
-      properties:
-        username:
-          type: string
-        password:
-          type: string
-    VaultReference:
-      type: object
-      required:
-      - vault
-      properties:
-        vault:
-          type: string
-          example: Team
-    SShKey:
-      required:
-      - label
-      - private
-      properties:
-        label:
-          type: string
-        private:
-          type: string
-        public:
-          type: string
-    GroupReference:
-      type: object
-      required:
-      - group
-      properties:
-        group:
-          type: string
-          example: client-1234
     Group:
       type: object
       required:
@@ -179,6 +123,62 @@ components:
               $ref: '#/components/schemas/Port'
             credentials:
               $ref: '#/components/schemas/Credentials'
+    Port:
+      type: integer
+      format: int64
+      default: 22
+      minimum: 1
+      maximum: 65535
+    CreateGroupResponse:
+      type: object
+    Credentials:
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    SShKey:
+      required:
+      - label
+      - private
+      properties:
+        label:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
+    VaultReference:
+      type: object
+      required:
+      - vault
+      properties:
+        vault:
+          type: string
+          example: Team
+    GroupReference:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          type: string
+          example: client-1234
+  parameters:
+    GroupExternalID:
+      name: external_id
+      in: path
+      description: Group ID in your original system, e.g., a client id.
+      required: true
+      example: client-1234
+      schema:
+        type: string
+  requestBodies:
+    Group:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Group'
 externalDocs:
   description: Termius Documentation
   url: https://support.termius.com/hc/en-us/

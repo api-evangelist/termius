@@ -127,15 +127,6 @@ paths:
         '400':
           description: Failed request. Check the request body.
 components:
-  parameters:
-    HostExternalID:
-      name: external_id
-      in: path
-      description: Host ID in your original system
-      required: true
-      example: vm-1234
-      schema:
-        type: string
   schemas:
     Port:
       type: integer
@@ -143,8 +134,25 @@ components:
       default: 22
       minimum: 1
       maximum: 65535
+    Credentials:
+      properties:
+        username:
+          type: string
+        password:
+          type: string
     CreateHostResponse:
       type: object
+    SShKey:
+      required:
+      - label
+      - private
+      properties:
+        label:
+          type: string
+        private:
+          type: string
+        public:
+          type: string
     Host:
       type: object
       allOf:
@@ -184,12 +192,6 @@ components:
               $ref: '#/components/schemas/Port'
             credentials:
               $ref: '#/components/schemas/Credentials'
-    Credentials:
-      properties:
-        username:
-          type: string
-        password:
-          type: string
     VaultReference:
       type: object
       required:
@@ -198,17 +200,6 @@ components:
         vault:
           type: string
           example: Team
-    SShKey:
-      required:
-      - label
-      - private
-      properties:
-        label:
-          type: string
-        private:
-          type: string
-        public:
-          type: string
     GroupReference:
       type: object
       required:
@@ -217,6 +208,15 @@ components:
         group:
           type: string
           example: client-1234
+  parameters:
+    HostExternalID:
+      name: external_id
+      in: path
+      description: Host ID in your original system
+      required: true
+      example: vm-1234
+      schema:
+        type: string
   requestBodies:
     Host:
       content:
