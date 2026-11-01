@@ -64,6 +64,122 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Termius is a company surfaced as a portfolio company of initialized-capital and added to the API Evangelist network as a stub for enrichment. Sector: enterprise-saas. This profile is a lead awaiting the enrichment pipeline.
+Termius is a modern, cross-platform SSH client for DevOps professionals, network engineers, and infrastructure teams, available on Windows, macOS, Linux, iOS, iPadOS, and Android. It provides secure remote access with encrypted team vaults, shared and synced credentials, SSH keys, snippets, SFTP, port forwarding, jump hosts, and session organization. For programmatic use Termius ships the API Bridge — a self-hosted REST API (OpenAPI 3.0) that encrypts infrastructure data locally and pushes hosts and groups into a Termius Team vault — plus an official command-line client. The company also runs a Security Center with a SOC 2 report.
 
-Backed by: initialized-capital — https://termius.com/
+**Areas:** Company · Enterprise Saas · SSH · SSH Client · Terminal · Developer Tools · DevOps · Infrastructure · Security · Remote Access
+
+## Termius on APIs.io
+
+Everything profiled for Termius is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/termius/](https://apis.io/providers/termius/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Termius Group API](https://apis.io/apis/termius/termius-group-api/) — Create a new Group
+- [Termius Host API](https://apis.io/apis/termius/termius-host-api/) — Create or Delete a host inside the vault or the group
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [termius-api-bridge](https://apis.io/servers/termius/termius-api-bridge/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Termius API Bridge group API](https://apis.io/collections/termius/open-termius-group-api/)
+- [Termius API Bridge group host API](https://apis.io/collections/termius/open-termius-host-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Termius Api Bridge Overlay](https://apis.io/overlays/termius/termius-api-bridge-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Termius Authentication](https://apis.io/security/termius/termius-authentication/)
+- [Termius Domain Security](https://apis.io/security/termius/termius-domain-security/)
+- [Termius Trust Center](https://apis.io/security/termius/termius-trust-center/)
+- [Termius Vulnerability Disclosure](https://apis.io/security/termius/termius-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://termius.com/)
+- [Documentation](https://docs.termius.com)
+- [Getting started](https://termius.com/documentation/getting-started)
+- [API reference](https://termius.com/api-docs/)
+- [Pricing](https://termius.com/pricing)
+- [Sign up](https://account.termius.com/signup)
+- [Support](https://support.termius.com/hc/en-us/)
+- [Blog](https://termius.com/blog)
+- [Security](https://termius.com/security)
+- [Compliance](https://security.termius.com)
+- [Trust centre](https://security.termius.com)
+- [Terms of service](https://termius.com/terms-of-use)
+- [Privacy policy](https://termius.com/privacy-policy)
+- [GitHub](https://github.com/termius)
+- [Status](https://status.termius.com/)
+
+## API Evangelist rating
+
+**Kin Score 49.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 42.9 |
+| Contract governance | 4.5 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 47.4 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | derived (partial credit) |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/termius/](https://apis.io/providers/termius/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Termius: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/termius/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
